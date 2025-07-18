@@ -19,7 +19,13 @@ def add_event():
         new_event = {"id": new_id, "title": data["title"]}
         events.append(new_event)
         return jsonify(new_event), 201
-    return "", 400
+    return jsonify({"Error": "Missing 'title' in request data"}), 400
+
+@app.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
