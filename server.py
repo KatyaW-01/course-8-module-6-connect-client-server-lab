@@ -1,11 +1,7 @@
 from flask import Flask, jsonify, request
+from data import events
 
 app = Flask(__name__)
-
-events = [
-    {"id": 1, "title": "Item added to cart" },
-    {"id": 2, "title": "Order placed"}
-]
 
 @app.route("/")
 def home():
