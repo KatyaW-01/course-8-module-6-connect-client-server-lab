@@ -17,8 +17,6 @@ document.querySelector("form").addEventListener("submit", (event) => {
 .then(renderEvent)
 })
 
-
-
 function renderEvent(event) {
   const li = document.createElement("li");
   li.textContent = `${event.title}`
