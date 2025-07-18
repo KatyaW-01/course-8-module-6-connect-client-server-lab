@@ -1,67 +1,39 @@
-# Lab: Building a Front-to-Back Event Catalog
+# Flask + JavaScript Event Tracker
 
-## Learning Goals
+This lightweight web app connects a front end built with HTML and JavaScript to a back end powered by Flask. It allows users to view a list of events and add new ones through a simple interface.
 
-- Serve a homepage using Flask
-- Create API routes that return and accept JSON
-- Handle GET and POST requests on the back end
-- Connect a Flask back end to a static front end
-- Pass all provided back end tests
+## Lab Objectives
 
----
+- Set up a Flask server that handles both `GET` and `POST` requests.
+- Use the JavaScript `fetch()` API to send and receive JSON data.
+- Return consistent JSON responses from Flask routes.
+- Dynamically render and update content on the front end based on back-end data.
 
-## Setup Instructions
+## How It Works
 
-### 1. Clone the Repository
+### Back End (`server.py`)
 
-```bash
-git clone <repo-url>
-cd course-8-module-6-connect-client-server-lab
-```
+- Built using **Flask**.
+- Handles routes:
+  - `GET /events` – returns the current list of events.
+  - `POST /events` – adds a new event with a unique `id` and `title`.
+- Adds CORS headers to allow communication with the front end.
+- Returns all data in JSON format.
 
-### 2. Create Your Environment
+### Front End (`script.js`)
 
-**Using Pipenv:**
-```bash
-pipenv install
-pipenv shell
-```
+- On page load, fetches the list of events and renders them to the DOM.
+- Listens for form submissions to add new events.
+- Sends `POST` requests with JSON to the server and dynamically updates the event list.
 
----
+## Files
 
-## Running the App
-
-```bash
-python server.py
-```
-
-Then open `client/index.html` in your browser to view the frontend.
-
----
-
-## Running the Tests
-
-To check your work, run:
-
-```bash
-pytest
-```
-
-All tests must pass to complete the lab.
-
----
-
-## Your Tasks
-
-- [ ] Implement the `/` route to return a welcome message in JSON
-- [ ] Implement a `GET /events` route that returns all event data
-- [ ] Implement a `POST /events` route that accepts a new event and returns it with status 201
-- [ ] Return a `400 Bad Request` if required data is missing in a POST
-
----
+- `server.py`: Flask app that serves and manages event data.
+- `data.py`: Contains a list of initial events
+- `script.js`: JavaScript logic for fetching and submitting events.
+- `index.html`: HTML structure with a form and a list to display events.
 
 ## File Structure
-
 ```
 .
 ├── client/
@@ -69,13 +41,29 @@ All tests must pass to complete the lab.
 │   ├── styles.css
 │   └── script.js
 ├── server.py
+|__ data.py
+|
 ├── tests/
 │   └── test_app.py
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
 ```
+## Prerequisites
+* Python 3.x installed on your system
+* Flask
+  ```bash
+  pip install flask
+  ```
+  
 
----
+## Running the App
 
-Good luck! 🚀
+1. **Start the Flask server**  
+   In your terminal, run:
+   ```bash
+   python server.py
+   ```
+   The server will be available at http://127.0.0.1:5000
+2. Open `index.html` in your browser
+3. Add and View Events
